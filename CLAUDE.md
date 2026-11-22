@@ -8,7 +8,7 @@ Guidance for Claude Code when working in this repository.
 
 Event Shift Scheduler: organizers create shifts with staffing limits, assign volunteers, and see coverage status and double-booking warnings. Volunteers see their own shifts. The PRD above is the source of truth for behavior. If a request conflicts with it, ask before going ahead.
 
-Status: scaffold only (the `create-next-app` starter page). HW4 covers domain logic and UI with no database, login, or deployment. Those come in P3.
+Status: HW4 in progress. Done: staffing status (`src/lib/domain/staffing-status.ts`), an in-memory shift repository with seed data (`src/lib/repositories/`), and the `/shifts` list page. Not started: shift creation, conflict detection, the volunteer view, and org admin. HW4 covers domain logic and UI with no database, login, or deployment. Those come in P3.
 
 ## Tech stack
 
@@ -32,7 +32,7 @@ npx vitest run -t "name"          # tests matching a name
 npx tsc --noEmit                  # type-check
 ```
 
-There is no `vitest.config.ts` yet, so the `@/*` alias does not resolve in tests. Add the config (with the alias, plus jsdom for component tests) before the first test that needs either one.
+`vitest.config.mts` resolves the `@/*` alias and runs tests in the Node environment (no jsdom). Test Server Components by rendering them to HTML with `renderToStaticMarkup` from `react-dom/server`; async pages can be awaited first (`renderToStaticMarkup(await Page())`). Anything that imports `next/font` (such as `layout.tsx`) can't be loaded in Vitest.
 
 ## Architecture decisions
 
