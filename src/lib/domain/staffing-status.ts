@@ -11,3 +11,10 @@ export function staffingStatus(
   if (assigned > shift.maxStaff) return "overstaffed";
   return "covered";
 }
+
+export type ShiftDisplayStatus = StaffingStatus | "cancelled";
+
+/** Status shown to organizers: a cancelled shift reads "cancelled" regardless of staffing. */
+export function shiftDisplayStatus(shift: Shift): ShiftDisplayStatus {
+  return shift.cancelled ? "cancelled" : staffingStatus(shift);
+}
