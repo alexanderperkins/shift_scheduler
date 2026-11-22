@@ -1,0 +1,55 @@
+import type { Shift } from "@/lib/domain/shift";
+
+/** Fixed demo data for HW4. Covers every display status, including the exact min/max boundaries. */
+export const seedShifts: readonly Shift[] = [
+  {
+    id: "shift-setup",
+    eventId: "spring-fair",
+    start: "2026-12-05T13:00:00.000Z",
+    end: "2026-12-05T15:00:00.000Z",
+    minStaff: 3,
+    maxStaff: 5,
+    cancelled: false,
+    assignedVolunteerIds: ["vol-ana"],
+  },
+  {
+    id: "shift-tickets",
+    eventId: "spring-fair",
+    start: "2026-12-05T15:00:00.000Z",
+    end: "2026-12-05T18:00:00.000Z",
+    minStaff: 2,
+    maxStaff: 4,
+    cancelled: false,
+    assignedVolunteerIds: ["vol-ana", "vol-ben"],
+  },
+  {
+    id: "shift-cleanup",
+    eventId: "spring-fair",
+    start: "2026-12-05T18:00:00.000Z",
+    end: "2026-12-05T20:00:00.000Z",
+    minStaff: 1,
+    maxStaff: 2,
+    cancelled: false,
+    assignedVolunteerIds: ["vol-cho", "vol-dev"],
+  },
+  {
+    id: "shift-sorting",
+    eventId: "food-drive",
+    start: "2026-12-06T14:00:00.000Z",
+    end: "2026-12-06T17:00:00.000Z",
+    minStaff: 2,
+    maxStaff: 3,
+    cancelled: false,
+    assignedVolunteerIds: ["vol-ben", "vol-cho", "vol-dev", "vol-eli"],
+  },
+  {
+    id: "shift-delivery",
+    eventId: "food-drive",
+    start: "2026-12-06T17:00:00.000Z",
+    end: "2026-12-06T19:00:00.000Z",
+    minStaff: 2,
+    maxStaff: 4,
+    cancelled: true,
+    assignedVolunteerIds: ["vol-eli"],
+  },
+];
