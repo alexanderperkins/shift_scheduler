@@ -179,6 +179,19 @@ describe("findConflicts", () => {
     ]);
   });
 
+  it("orders pairs that share an earlier shift by the later shift's start, then id", () => {
+    const shifts = [
+      makeShift("s-b", "15:00", "16:00", ["vol-ana"]),
+      makeShift("s-z", "14:00", "15:00", ["vol-ana"]),
+      makeShift("s-a", "13:00", "18:00", ["vol-ana"]),
+    ];
+    // s-z starts before s-b, so it comes first even though its id sorts later.
+    expect(findConflicts(shifts)).toEqual([
+      { volunteerId: "vol-ana", shiftIds: ["s-a", "s-z"] },
+      { volunteerId: "vol-ana", shiftIds: ["s-a", "s-b"] },
+    ]);
+  });
+
   it("doesn't treat a volunteer ID repeated within one shift as a conflict", () => {
     expect(findConflicts([makeShift("s1", "13:00", "15:00", ["vol-ana", "vol-ana"])])).toEqual([]);
     expect(

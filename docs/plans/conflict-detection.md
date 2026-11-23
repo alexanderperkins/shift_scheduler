@@ -48,7 +48,7 @@ export function findConflicts(shifts: readonly Shift[]): Conflict[];
 2. Build a map from volunteer to their shifts. Within one shift, use a `Set` so a repeated volunteer ID counts once.
 3. For each volunteer, sort their shifts by start, then id.
 4. Check every pair `i < j` with `shiftsOverlap`. This O(n²) per volunteer is fine for HW4 sizes.
-5. Sort the output by `volunteerId`, then by the earlier shift's start, then the earlier id, then the later id.
+5. Sort the output by `volunteerId`, then by the earlier shift (start, then id), then by the later shift (start, then id).
 
 This gives the following guarantees:
 - each pair is reported once
@@ -84,6 +84,7 @@ Tests go in `tests/unit/conflicts.test.ts`.
 11. reports all three pairs for a three-way overlap, sorted deterministically
 12. doesn't treat a volunteer ID repeated within one shift as a conflict
 13. doesn't mutate its input (frozen input plus a `structuredClone` snapshot, as in `tests/unit/staffing-status.test.ts`)
+14. orders pairs that share an earlier shift by the later shift's start, then id
 
 ## TDD steps (red, green, refactor; one commit each)
 
