@@ -3,12 +3,17 @@
 Guidance for Claude Code when working in this repository.
 
 @docs/PRD.md
+@docs/hw4/context-management.md
 
 ## Project
 
 Event Shift Scheduler: organizers create shifts with staffing limits, assign volunteers, and see coverage status and double-booking warnings. Volunteers see their own shifts. The PRD above is the source of truth for behavior. If a request conflicts with it, ask before going ahead.
 
-Status: HW4 in progress. Done: staffing status (`src/lib/domain/staffing-status.ts`), an in-memory shift repository with seed data (`src/lib/repositories/`), and the `/shifts` list page. Not started: shift creation, conflict detection, the volunteer view, and org admin. HW4 covers domain logic and UI with no database, login, or deployment. Those come in P3.
+Status: HW4 in progress. Done: staffing status (`src/lib/domain/staffing-status.ts`), conflict detection (domain: `src/lib/domain/conflicts.ts`), an in-memory shift repository with seed data (`src/lib/repositories/`), and the `/shifts` list page. Not started: the conflict warning in the UI, shift creation, the volunteer view, and org admin. HW4 covers domain logic and UI with no database, login, or deployment. Those come in P3.
+
+## Context management
+
+Follow the strategy in `docs/hw4/context-management.md` (imported above): one task per session, durable facts in files, `/clear` between Plan and Implement, and `/compact` with a focus hint mid-task.
 
 ## Tech stack
 
