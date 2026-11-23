@@ -231,4 +231,4 @@ The full suite passes: 53 tests across 7 files, plus `tsc --noEmit` and `lint`. 
 | Context management (`/clear`, `/compact`, `--continue`) | Sections 3, 5 and 7. Screenshots 06–10 and 12. |
 | Explore → Plan → Implement → Commit | Sections 1–6. Commits `1957a4a` → `a15446b` → … → `dcb73fd`. |
 | TDD red → green → refactor | Commits `29613e9`/`ff05e73` and `763647a`/`c874ea5`/`ed19cde`. Screenshots tdd-01 to tdd-10. |
-| Tests before implementation | Every `test(red)` commit fails on the parent code (see `docs/hw4/test-results.md` for the replay of the earlier feature). |
+| Tests before implementation | Every `test(red)` commit adds only tests and fails before its `feat(green)` commit (screenshots tdd-01, tdd-05, tdd-06). |
