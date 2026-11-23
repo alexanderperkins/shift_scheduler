@@ -35,6 +35,9 @@ We wrote the strategy down first (`docs/hw4/context-management.md`) and imported
 
 **What we would do differently:** With a 1M-token context window, we never came close to the limit: the largest session used only 82k tokens (8%). So `/compact` and `/clear` mattered more for focus than for space. Clearing old exploration output kept Claude anchored to the plan. On a smaller window, or a longer feature, the same habits would decide whether a session finishes at all. We would also export the transcript before each `/compact`, because `/export` only saves the conversation from the last compact onward.
 
+## 3. Applying the workflow to staffing status (Part 2)
+We used the same four phases on the staffing status feature. Claude explored the repo read-only and saved notes, and its findings raised four open questions (page location, cancelled shifts, new dependencies, event scope) that we answered in Plan mode before any code existed. The plan became an eight-step contract, and each step produced a red commit, then a green commit. Claude also flagged where it departed from the plan, such as red commits that don't pass tsc. For context, we ran /compact after implementation, restored the session with claude --continue (the earlier conversation and summary came back), then ran /clear for a fresh context. Nothing was lost because the PRD, plan, and CLAUDE.md held the details.
+
 ## Session log
 
 The annotated session log is in `docs/hw4/session-log.md`, with screenshots in `docs/hw4/session-logs/` and the exported transcript in `docs/hw4/session-logs/conflict-detection-session.txt`.
