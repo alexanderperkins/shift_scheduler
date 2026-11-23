@@ -125,7 +125,7 @@ If a refactor step has nothing worth changing, say so instead of making an empty
 
 ## Verification
 
-- `npx vitest run tests/unit/conflicts.test.ts` passes all 19 tests.
+- `npx vitest run tests/unit/conflicts.test.ts` passes all 21 tests (14 `findConflicts` criteria plus 6 `shiftsOverlap` criteria; the cancelled-shift `it.each` runs twice).
 - `npm test` passes, so existing tests are unaffected.
 - `npx tsc --noEmit` and `npm run lint` are clean.
 - `git log` shows the red, green, and refactor commits in order.
